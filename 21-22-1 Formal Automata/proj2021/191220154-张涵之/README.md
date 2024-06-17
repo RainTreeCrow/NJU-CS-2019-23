@@ -1,0 +1,1 @@
+enter make to compile and make clean to delete turing
