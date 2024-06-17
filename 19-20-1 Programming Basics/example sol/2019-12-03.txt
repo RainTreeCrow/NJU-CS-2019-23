@@ -1,0 +1,184 @@
+//第一题
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+ 
+using namespace std;
+ 
+void without(char *p, char c) {
+    while(*p != '\0') {
+        if(*p != c)
+            printf("%c", *p);
+        p++;
+    }
+}
+ 
+
+int main() {
+    char str[1000], c;
+    scanf("%s", str);
+    scanf(" %c", &c);
+    char *p = &str[0];
+    without(p, c);
+    return 0;
+}
+//第二题
+#include<cstdio>
+#include<cstring>
+using namespace std;
+char s[1000];
+int check(int n) {
+    if (n % 2) return n;
+    for (int i = 0; i * 2  + 1 < n; i++) {
+        if (s[i] != s[n - 1 - i]) return n;
+    }
+    return check(n / 2);
+}
+int main() {
+    scanf("%s", s);
+    printf("%d", check(strlen(s)));
+}
+
+//第三题
+#include<stdio.h>   
+#include<string.h>
+char str[101];
+int main()
+{
+    int i;
+    while (gets(str) != NULL)
+    {
+        i = 0;
+        for (i = 0; str[i] != '\0'; i++)
+        if (str[i] == 'y'&&str[i + 1] == 'o'&&str[i + 2] == 'u')
+        {
+            printf("we");
+            i += 2;
+        }
+        else
+        {
+            printf("%c", str[i]);
+        }
+        printf("\0");
+        printf("\n");
+    }
+    return 0;
+}
+
+//第四题
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int a[1000];
+    int ans = 0;
+    for (int i = 0; i < n; i++){
+        cin >> a[i];
+        ans = ans + a[i];
+    }
+    int temp;
+    for (int i = 1; i < n; i++){
+        for (int j = 0; j < i; j++) {
+            if (a[i] < a[j])
+            {
+                temp = a[j];
+                a[j] = a[i];
+                a[i] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++)
+        cout << a[i]<<" ";
+    cout << endl;
+    ans = ans / n;
+    cout << ans;
+}
+
+//第五题
+#include<iostream>
+#include<string>
+using namespace std;
+struct Student {//声明结构体Student
+	char num[10];
+	char name[20];
+	float english;
+	float math;
+	float computer;
+	float average;
+};
+
+void shuchu(Student &s) {//结构体内容输出的函数
+	cout << s.num << " ";
+	cout << s.name << " ";
+	cout << s.english << " ";
+	cout << s.math << " ";
+	cout << s.computer << " ";
+	cout << s.average;
+}
+
+int main() {
+	Student s[5];//声明结构体数组
+
+
+	int i = 0;
+	for (; i < 5; i++) {//初始化结构统计数据
+		cin >> s[i].num;
+		cin >> s[i].name;
+		cin >> s[i].english;
+		cin >> s[i].math;
+		cin >> s[i].computer;
+		s[i].average = (s[i].english + s[i].math + s[i].computer) / 3;
+	}
+
+
+	float english_sum = 0, math_sum = 0, computer_sum = 0;
+
+	for (i = 0; i < 5; i++)
+	{
+		english_sum += s[i].english;
+		math_sum += s[i].math;
+		computer_sum += s[i].computer;
+	}
+
+	cout << english_sum / 5 << " " << math_sum / 5 << " " << computer_sum / 5 << endl;
+
+
+	float max = s[0].average;
+	int k = 0;
+	for (i = 0; i<5; i++) {
+
+		if (s[i].average>max) {//通过打擂台法获得平均分最高的数据
+			k = i;
+			max = s[i].average;
+		}
+	}
+
+
+	shuchu(s[k]);//输出最高分数据
+
+
+
+	return 0;
+}
+ 
+
+//第六题
+#include<cstdio>
+#include<cstring>
+using namespace std;
+char str[201];
+int main() {
+    int n;
+    scanf("%d", &n);
+    scanf("%s", str);
+    int tmp = strlen(str) / n;
+    for (int i = 0; i < n;i++) {
+        for (int i2 = 0; i2 < tmp; i2++) {
+            if(i2 % 2 == 0) printf("%c", str[i2 * n + i]);
+            else printf("%c", str[i2 * n + n - 1 - i]);
+        }
+    }
+}
+

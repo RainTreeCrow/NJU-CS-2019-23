@@ -1,0 +1,5 @@
+﻿  20191210(3).cpp
+C:\Users\grace\source\repos\20191210(3)\20191210(3).cpp(24,11): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+C:\Users\grace\source\repos\20191210(3)\20191210(3).cpp(24,28): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+C:\Users\grace\source\repos\20191210(3)\20191210(3).cpp(25,13): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  20191210(3).vcxproj -> C:\Users\grace\source\repos\20191210(3)\Debug\20191210(3).exe

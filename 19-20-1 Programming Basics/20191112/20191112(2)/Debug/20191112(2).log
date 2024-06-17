@@ -1,0 +1,3 @@
+﻿  20191112(2).cpp
+C:\Users\grace\source\repos\20191112(2)\20191112(2).cpp(23,40): warning C4244: “初始化”: 从“__int64”转换到“unsigned int”，可能丢失数据
+  20191112(2).vcxproj -> C:\Users\grace\source\repos\20191112(2)\Debug\20191112(2).exe

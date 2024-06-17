@@ -1,0 +1,4 @@
+﻿  20191217(2).cpp
+C:\Users\grace\source\repos\20191217(2)\20191217(2).cpp(20,18): warning C4101: “y”: 未引用的局部变量
+C:\Users\grace\source\repos\20191217(2)\20191217(2).cpp(20,15): warning C4101: “x”: 未引用的局部变量
+  20191217(2).vcxproj -> C:\Users\grace\source\repos\20191217(2)\Debug\20191217(2).exe

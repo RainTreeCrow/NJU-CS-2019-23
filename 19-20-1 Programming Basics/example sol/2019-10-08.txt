@@ -1,0 +1,136 @@
+/*
+《程序设计基础》课程第2次上机实验参考代码
+*/
+
+// 问题1
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a, b, t;
+	cin >> a >> b;
+
+	if (a<b)
+	{
+		t = a;
+		a = b;
+		b = t;
+	}
+	while (b != 0)
+	{
+		t = a%b;
+		a = b;
+		b = t;
+	}
+	cout << a;
+	return 0;
+}
+
+// 问题2
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int high, i, j;
+	cin >> high;
+	for (i = 1; i <= high; i++)
+	{
+		for (j = high; j>i; j--)cout << " ";
+		for (j = 1; j <= i; j++)cout << j;
+		for (j = i - 1; j >= 1; j--)cout << j;
+		cout << endl;
+	}
+	return 0;
+}
+
+// 问题3
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str;
+	string idx[4] = { "千位","百位","十位","个位" };
+	cin >> str;
+
+	int cur;
+	int count = 0;
+	string output;
+	for (int i = 3; i >= 0; i--) {
+		cur = str[i] - '0';
+		/*
+		if (i == 0 && cur == 0) {
+			cout << "请输入正确的四位整数，首位不能为0";
+			return -1;
+		}
+		if (cur>9 || cur<0) {
+			cout << "请输入正确的四位整数，不能包含其他字符";
+			return -1;
+		}
+		*/
+		if (cur % 2 == 0) {
+			count++;
+			cout << output + idx[i] + ":" + str[i] + "\n";
+		}
+	}
+	if (count != 0) {
+		cout << output;
+	}
+	cout << endl;
+	return 0;
+}
+
+// 问题4
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int eng = 0, num = 0, oth = 0, spa = 0;
+	for (int i = 1; i <= 10; i++)
+	{
+		char c = getchar();
+		if ((c >= '0') && (c <= '9'))
+		{
+			num++;
+		}
+		else if ((c >= 'a') && (c <= 'z'))
+		{
+			eng++;
+		}
+		else if ((c >= 'A') && (c <= 'Z'))
+		{
+			eng++;
+		}
+		else if (c == ' ')
+		{
+			spa++;
+		}
+	}
+	oth = 10 - eng - num - spa;
+	cout << eng << endl << num << endl << spa << endl << oth << endl;
+	return 0;
+}
+
+// 问题5
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int i;
+	int j = 0;
+	cin >> i;
+	int k = i;
+	while (i>0)
+	{
+		j = 10 * j + i % 10;
+		i = (i - i % 10) / 10;
+	}
+	if (k == j)
+		cout << "YES";
+	else
+		cout << "NO";
+}

@@ -1,0 +1,4 @@
+﻿  20191112(6).cpp
+C:\Users\grace\source\repos\20191112(6)\20191112(6).cpp(6,9): warning C4101: “j”: 未引用的局部变量
+C:\Users\grace\source\repos\20191112(6)\20191112(6).cpp(6,6): warning C4101: “i”: 未引用的局部变量
+  20191112(6).vcxproj -> C:\Users\grace\source\repos\20191112(6)\Debug\20191112(6).exe

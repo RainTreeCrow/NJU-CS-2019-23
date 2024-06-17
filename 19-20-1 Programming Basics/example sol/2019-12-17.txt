@@ -1,0 +1,212 @@
+//第一题
+#include<stdio.h>
+int max(int x, int y)
+{
+    return x > y ? x : y;
+}
+ 
+int n;
+int money(int* a, int start)
+{
+    if (start >= n)
+        return 0;
+    return max(a[start] + money(a, start + 2), money(a, start + 1));
+}
+int main()
+{
+    int a[20];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+    printf("%d\n",money(a,0));
+    return 0;
+}
+//第二题
+#include<stdio.h>
+int n;
+int a[20][20];
+bool visited[20][20];
+void visit(int i, int j)
+{
+    if (i<0||i==n||j<0||j==n ||visited[i][j])
+        return;
+    if (a[i][j] == 1)
+        return;
+    visited[i][j] = true;
+ 
+    visit(i - 1, j);
+    visit(i + 1, j);
+    visit(i, j - 1);
+    visit(i, j + 1);
+}
+int main()
+{
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            scanf("%d", &a[i][j]);
+ 
+    //将周围一圈的0找到，并递归，设为visited
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if ((i == 0 || i == n - 1 || j == 0 || j == n - 1) && a[i][j] == 0 && visited[i][j] == false)
+                visit(i, j);
+        }
+    }
+ 
+    //剩下的0，如果不是visited，就改成1
+    for (int i = 1; i < n - 1; i++)
+        for (int j = 1; j < n - 1; j++)
+            if (a[i][j] == 0 && visited[i][j] == false)
+                a[i][j] = 1;
+ 
+ 
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+            printf("%d ", a[i][j]);
+        printf("\n");
+    }
+ 
+    return 0;
+}
+//第三题
+#include<stdio.h>
+#include<algorithm>
+using namespace std;
+struct qujian
+{
+    int a;
+    int b;
+}x[100];
+bool cmp(qujian x1, qujian x2) { return x1.a < x2.a; }
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+        scanf("%d %d", &x[i].a,&x[i].b);
+    sort(x, x + n, cmp);
+    int tmp=x[0].b;
+    printf("%d ", x[0].a);
+    for (int i = 0; i < n; i++)
+    {
+        if (tmp >= x[i].a)
+            tmp = x[i].b;
+        else
+        {
+            printf("%d\n", tmp);
+            printf("%d ", x[i].a);
+            tmp = x[i].b;
+        }
+    }
+    printf("%d\n", x[n-1].b);
+    return 0;
+}
+//第四题
+#include<stdio.h>
+int a[20][20];
+int b[20];
+void find(int i,int n)
+{
+    if (b[i] == 1)
+        return;
+    b[i] = 1;
+    for (int k = 0; k < n; k++)
+        if (a[i][k] == 1)
+            find(k, n);
+}
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++)
+    for (int j = 0; j < n; j++)
+        scanf("%d", &a[i][j]);
+    int res = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (b[i] == 0)
+        {
+            res++;
+            find(i,n);
+        }
+    }
+    printf("%d\n",res);
+    return 0;
+}
+//第五题
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    node* next;
+};
+//反向构建链表
+node *creat_a_list(int n)
+{
+    node *head = NULL;
+    node*p;
+    for (int i = 0; i < n; i++)
+    {
+        p = (node*)malloc(sizeof(node));
+        scanf("%d", &(p->data));
+        p->next = head;
+        head = p;
+    }
+    return head;
+}
+//完成翻转再翻转操作
+node*reverse(node*head, int a, int b)
+{
+    node *p = head;
+    for (int i = 1; i != a; i++)
+        p = p->next;
+    node *q = p, *t, *head_of_t, *tail;
+    tail = NULL;
+    head_of_t = NULL;
+    for (int i = 0; i !=b-a+1; i++,q=q->next)
+    {
+        t = (node *)malloc(sizeof(node));
+        t->data = q->data;
+        t->next = head_of_t;
+        head_of_t = t;
+        if (head_of_t->next == NULL)
+        {
+            tail = head_of_t;
+            tail->next = NULL;
+        }
+    }
+    if (p == head)
+    {
+        head=head_of_t;
+        tail->next = q;
+        return head;
+    }
+    node *pp;
+    for (pp = head; pp->next != p;)
+        pp = pp->next;
+    pp->next = head_of_t;
+    tail->next = q;
+    return head;
+}
+//输出链表
+void output(node*head)
+{
+    node *p = head;
+    for (; p != NULL; p = p->next)
+        printf("%d ", p->data);
+}
+int main(int argc, char* argv[])
+{
+    int n, a, b;
+    scanf("%d %d %d", &n, &a, &b);
+    node *head = creat_a_list(n);
+    node*headd=reverse(head, a, b);
+    output(headd);
+    return 0;
+}
+

@@ -1,0 +1,18 @@
+第一题#include <iostream>using namespace std;int main(){int n;while (cin >> n){while (n){cout << n % 10;n = n / 10;}cout << endl;}return 0;}第二题#include<iostream>using namespace std;int com(int m, int n);int fa(int n);int main(){int m,n,value;cin >> m >> n;value = com(m,n);cout << value <<endl;}int com(int m, int n){int value;value = fa(m)/(fa(n)*fa(m-n));return value;}int fa(int n){if (n==0||n==1)return 1;elsereturn n*fa(n-1);}第三题#include<iostream>using namespace std;int digit(long n, int k);int main(){int n,k,value;cin >> n >> k;value = digit(n,k);cout<<value<<endl;return 0;}int digit(long n, int k){int i,value;for(i=0; i<k-1; i++)n/=10;value=n%10;return value;}第四题#include<stdio.h>void fun(int m,int k){int aa[20], i, j;for (i=0;m>0;i++){aa[i]=m%k;m/=k;}for (j=i;j>0;j--){printf("%d",aa[j-1]);}}int main(){int b, n;scanf("%d%d",&n,&b);fun(n,b);printf("\n");return 0;}第五题
+#include<iostream>
+using namespace std;
+
+int Path(int n)
+{
+	if(n==1) return 1;
+	if(n==2) return 1;
+	if(n%2==1) return Path(n-1) + Path(n-2);
+	return Path(n-1) + Path(n-2) + Path(n-3); 
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	cout<<Path(n)<<endl;
+}

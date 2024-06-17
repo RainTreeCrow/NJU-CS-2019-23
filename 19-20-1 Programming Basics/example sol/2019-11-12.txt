@@ -1,0 +1,215 @@
+第一题
+#include<iostream>
+#include<cmath>
+using namespace std;
+int idx[50];
+int find_cirlces(double len[], int n)
+{
+	int count = 0;
+	double c1, c2, c3, c4;
+	double x[51];
+	for (int i = 0; i < n; i++)
+	{
+		x[i] = 0;
+	}
+	for (int i = 1; i < n+1; i++)
+	{
+		x[i] = x[i-1]+len[i-1];
+	}
+	for (int i = 0; i < n-3; i++)
+	{
+		for (int j = i+1; j < n-2; j++)
+		{
+			c1 = x[j] - x[i];
+			for (int k = j+1; k < n-1; k++)
+			{
+				c2 = x[k] - x[j];
+				for (int h = k+1; h < n; h++)
+				{
+					c3 = x[h] - x[k];
+					c4 = x[i] + x[n] - x[h];
+					if (abs(c1 - c3) < 0.0001 && abs(c2 - c4) < 0.0001)
+					{
+						idx[count] = i;
+						idx[count + 1] = j;
+						idx[count + 2] = k;
+						if (h == n)
+							idx[count + 3] = 0;
+						else
+							idx[count + 3] = h;
+						count = count + 4;
+					}
+				}
+			}
+		}
+	}
+	return count/4;
+}
+int main()
+{
+	double length[50];
+	int point_num;
+	cin >> point_num;
+	for (int ii = 0; ii < point_num; ii++)
+	{
+		cin >> length[ii];
+	}
+	int c = find_cirlces(length, point_num);
+	cout << c << endl;
+	for (int jj = 0; jj < 4*c; jj++)
+	{
+		cout << idx[jj]<<" ";
+	}
+}
+
+第一题
+#include <iostream>
+#define N 10000000
+using namespace std;
+int Collatz_length[N];
+int max_Collatz_length(int n) {
+long long sequence, next;
+int max_length = 0;
+for (int k = 2; k <= n; k++) {
+int length = 1;
+sequence = k;
+while (sequence != 1) {
+if (sequence % 2 == 0)
+next = sequence / 2;
+else
+next = sequence * 3 + 1;
+if (next < k) {
+length += Collatz_length[next];
+break;
+}
+length++;
+sequence = next;
+}
+Collatz_length[k] = length;
+if (length > max_length)
+max_length = length;
+}
+return max_length;
+}
+int main() {
+Collatz_length[0] = 0;
+Collatz_length[1] = 1;
+int n;
+cin >> n;
+cout << max_Collatz_length(n) << endl;
+return 0;
+}
+第二题
+#include <iostream>
+#include <cmath>
+using namespace std;
+int maxpPrimeFactor(int n)
+{
+int maxPF = 0;
+if (n % 2 == 0)
+maxPF = 2;
+while (n % 2 == 0)
+{
+n /= 2;
+}
+//处理之后n一定为奇数
+for (int i = 3; i <= sqrt(n); i += 2)
+{
+while (n % i == 0)
+{
+maxPF = i;
+n /= i;
+}
+}
+//可能存在n为大于2的素数
+if (n > 2)
+{
+maxPF = n;
+}
+return maxPF;
+}
+int main()
+{
+int n;
+cin >> n;
+cout << maxpPrimeFactor(n) << endl;
+return 0;
+}
+第三题
+#include <iostream>
+#include <vector>
+using namespace std;
+int searchInsert(vector<int>& nums, int target) {
+int index = 0;
+for (int i = 0; i < nums.size() + 1; i++)
+{
+if (i == nums.size())
+return nums.size();
+if (nums[i] >= target)
+return i;
+}
+}
+int main()
+{
+int n, temp;
+vector<int> nums;
+cin >> n;
+while (n--)
+{
+cin >> temp;
+nums.push_back(temp);
+}
+int target;
+cin >> target;
+cout<<searchInsert(nums, target);
+return 0;
+}
+第四题
+#include <iostream>
+using namespace std;
+int problem01(int m, int n) {
+if (m == 0 || n == 1)
+return 1;
+if (n > m)
+return problem01(m, m);
+return problem01(m - n, n) + problem01(m, n - 1);
+}
+int main() {
+int m, n;
+cin >> m >> n;
+cout << problem01(m, n) << endl;
+return 0;
+}
+第五题
+#include <cstdio>
+using namespace std;
+int main()
+{
+int ti;
+int N;
+scanf("%d", &N) ;
+ti = 1;
+for (int i = 1; i <= N; ++i)
+{
+ti *= 3;
+}
+printf("%d\n", ti - 1);
+return 0;
+}
+第六题
+#include <iostream>
+using namespace std;
+int main() {
+int n;
+cin >> n;
+int num0 = 0, num1 = 0;
+while (n != 0) {
+if (n & 1)
+num1++;
+else
+num0++;
+n >>= 1;
+}
+cout << (num0 > num1 ? num0 - num1 : num1 - num0) << endl;
+return 0;
+}

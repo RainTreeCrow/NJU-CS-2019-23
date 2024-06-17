@@ -1,0 +1,116 @@
+
+//实验6_3
+
+#include<iostream>
+using namespace std;
+void move(int n, char begin, char end)
+{
+	cout << "Move disk " << n << " from " << begin << " to " << end << endl;
+}
+void hanoi(int n, char begin, char middle, char end)
+{
+	if (n == 1)
+	{
+		move(1, begin, end);
+	}
+	else
+	{
+		hanoi(n - 1, begin, end, middle);
+		move(n, begin, end);
+		hanoi(n - 1, middle, begin, end);
+	}
+}
+int main()
+{
+	int n;
+	cin >> n;
+	hanoi(n, 'A', 'B', 'C');
+	return 0;
+}
+
+//实验6_2
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int start, end;
+	cin >> start >> end;
+	int a[100];
+	a[1] = 1;
+	a[2] = 2;
+	for (int i = 3; i <= end - start; i++)
+	{
+		a[i] = a[i - 1] + a[i - 2];
+	}
+	cout << a[end - start] << endl;
+	
+	return 0;
+}
+
+//实验7_2
+
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+bool judge(int num)
+{
+	while (num > 0)
+	{
+		int tmp = num % 10;
+		if (tmp != 4 && tmp != 7)
+			return false;
+		num = num / 10;
+	}
+	return true;
+}
+
+int main()
+{
+	int number;
+	cin >> number;
+	for (int i = 2; i <= number; i++)
+	{
+		if (number%i == 0)
+			if (judge(i))
+			{
+				cout << "YES" << endl;
+				
+				return 0;
+			}
+	}
+	cout << "NO" << endl;
+	
+	return 0;
+}
+
+//实验7_3
+
+#include <iostream>
+
+using namespace std;
+
+int gcd(int a, int b) {
+	int remainder;
+	while (b != 0) {
+		remainder = a % b;
+		a = b;
+		b = remainder;
+	}
+	return a;
+}
+
+int main() {
+
+	int a, b;
+	cin >> a >> b;
+	int c = 2 * b;
+	while (gcd(a, c) != b) {
+		c += b;
+	}
+	cout << c << endl;
+
+	return 0;
+} 

@@ -1,0 +1,337 @@
+//第一题
+#include<iostream>
+#include<iomanip>
+using namespace std;
+
+int Properfra(int n, int(*p)[2]);
+int gcd(int m, int n);
+
+int main()
+{
+	int i, n, count, data[100000][2];
+	cin >> n;
+	count = Properfra(n, data);
+	cout << " " << count << endl;
+	for (i = 1; i <= count; i++)
+		cout << " " << data[i][0] << '/' << data[i][1];
+	cout << endl;
+	return 0;
+}
+
+int Properfra(int n, int(*p)[2])
+{
+	int i, j, count;
+	count = 0;
+	for (i = 2; i<n; i++)
+		for (j = 1; j<i; j++)
+		{
+			if (gcd(i, j) == 1)
+			{
+				count++;
+				p[count][0] = j;
+				p[count][1] = i;
+			}
+		}
+	return count;
+}
+
+int gcd(int m, int n)
+{
+	int r = n;
+	while (m%n != 0)
+	{
+		r = m%n;
+		m = n;
+		n = r;
+	}
+	return r;
+}
+
+//第二题
+#include<iostream>
+#include<cstdio>
+#include<algorithm>
+#include <stdio.h> 
+using namespace std;
+char *select(char a[], int n) {
+	int i = 0;
+	int c[100], s[100];
+	int m = 0;
+	int k = 0;
+	int j;
+	while (a[i] != '\0') {
+		j = 0;
+		while (a[i] != ' '&& a[i] != '.') {
+			j++;
+			if (j == 1) {
+				s[k] = i;
+				k++;
+			}
+			i++;
+		}
+		c[m] = j;
+		m++;
+		i++;
+	}
+	int max;
+	int h;
+	max = m - 1;
+	for (h = m - 2; h >= 0; h--) {
+		max = (c[max] > c[h]) ? max : h;
+	}
+	char *p;
+	p = new char[c[max] + 1];
+	for (h = 0; h < c[max]; h++)
+		p[h] = a[s[max] + h];
+	p[h] = '\0';
+	return p;
+	delete p;
+}
+int main() {
+	char a[1000];
+	gets_s(a);
+	int i = 0;
+	while (a[i] != '\0')
+		i++;
+	cout << select(a, i);
+	//system("pause");
+	return 0;
+}
+
+//第三题
+#include<stdio.h>
+void sort(int x[], int n)
+{
+    int i, l, t;
+    for (i = 0; i<n - 1; i++)
+        for (l = 0; l<n - i - 1; l++)
+            if (x[l]>x[l + 1])
+            {
+                t = x[l];
+                x[l] = x[l + 1];
+                x[l + 1] = t;
+            }
+ 
+}
+int main()
+{
+    int i, m, n, x[26555];
+    scanf("%d", &n);
+    for (i = 0; i<n; i++)
+        scanf("%d", &x[i]);
+    sort(x, n);
+    m = -1;
+    if (n % 2 == 0)
+    {
+        m = n / 2;
+        float temp = (float)(x[m] + x[m - 1]) / 2;
+        printf("%.2f", temp);
+    }
+    else
+    {
+        m = (n + 1) / 2 - 1;
+        printf("%d", x[m]);
+    }
+ 
+    return 0;
+}
+
+//第四题
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+ 
+using namespace std;
+ 
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode(int x) : val(x), next(nullptr) {}
+};
+ 
+ListNode* buildList(const string& input) {
+    vector<int> list;
+    stringstream ss;
+    ss.str(input);
+    string item;
+    while (getline(ss, item, '>')) {
+        list.push_back(stoi(item));
+    }
+ 
+    ListNode* dummy = new ListNode(0);
+    ListNode* ptr = dummy;
+    for (int item : list) {
+        ptr->next = new ListNode(item);
+        ptr = ptr->next;
+    }
+    ptr = dummy->next;
+    delete dummy;
+    return ptr;
+}
+ 
+int main() {
+ 
+    string s1, s2;
+    cin >> s1 >> s2;
+    ListNode* l1 = buildList(s1);
+    ListNode* l2 = buildList(s2);
+    ListNode *head, *p, *tail;
+    head = p = l1;
+    tail = p;
+    while (p->next)
+    {
+        p = p->next;
+        tail = p;
+    }
+    tail->next = l2;
+    for (p = head;p->next;p = p->next)
+    {
+        ListNode *min = p;
+        for (ListNode *q = p->next;q;q = q->next)
+            if (q->val < min->val)
+                min = q;
+        if (min != p)
+        {
+            int temp = min->val;
+            min->val = p->val;
+            p->val = temp;
+        }
+    }
+    p = head;
+    while (p->next)
+    {
+        cout << p->val << "->";
+        p = p->next;
+    }
+    cout << p->val << endl;
+    while (head)
+    {
+        p = head;
+        head = head->next;
+        delete p;
+    }
+    return 0;
+}
+
+//第五题
+#include<cstdlib>
+#include<cstdio>
+ 
+typedef struct linklist
+{
+    int data;
+    struct linklist *next;
+}list,*plist;
+ 
+ 
+void head_insert(plist *head, plist *tail, int num)
+{
+    plist p_new = (plist)malloc(sizeof(list));
+    p_new->data = num;
+    p_new->next = NULL;
+    if (*head == NULL )
+    {
+        *head = p_new;
+        *tail = p_new;
+    }
+    else                   
+    {
+        p_new->next = *head;
+        *head = p_new;   
+    }
+}
+void print_list(plist head)
+{
+    plist elem = head;
+    while (elem!=NULL)
+    {
+        printf("%d ",elem->data);
+        elem = elem->next;
+    }
+    printf("\n");
+}
+ 
+int main()
+{
+    int number;
+    int cnt;
+    plist head, tail;
+    head = NULL;
+    tail = NULL;
+    scanf("%d",&cnt);
+     
+    while (cnt--) 
+    {
+        scanf("%d", &number);
+        head_insert(&head, &tail,number);
+    }
+    print_list(head);
+    return 0;
+} 
+
+//第六题
+#include<iostream>
+
+using namespace std;
+
+/**//* 记录当前的放置方案 */
+int *x;
+/**//* 皇后的个数N 和 方案数目 */
+int n, sum = 0;
+/**//* 检查参数所指示的这一行皇后放置方案是否满足要求 */
+int  Place(int);
+/**//* 递归方法求取皇后放置方案*/
+void Queen1(void);
+/**//* 用户递归求取皇后放置方案的递归方法 */
+void TraceBack(int);
+
+
+int main()
+{
+
+	long start, stop;
+
+	cin >> n;
+
+	x = (int *)malloc(sizeof(int)*n);
+
+	Queen1();
+
+	cout << sum;
+
+	return 0;
+
+}
+
+int Place(int r)
+{
+	int i;
+	for (i = 0; i < r; i++) {
+		if (x[r] == x[i] || abs(r - i) == abs(x[r] - x[i]))
+			return 0;
+	}
+	return 1;
+}
+
+void TraceBack(int r)
+{
+	int i;
+	if (r >= n) {
+		sum++;
+	}
+	else {
+		for (i = 0; i < n; i++) {
+			x[r] = i;
+			if (Place(r)) TraceBack(r + 1);
+		}
+	}
+}
+
+
+
+void Queen1(void)
+{
+	TraceBack(0);
+}
+
