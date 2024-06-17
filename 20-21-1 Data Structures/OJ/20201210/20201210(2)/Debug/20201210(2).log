@@ -1,0 +1,4 @@
+﻿  20201210(2).cpp
+C:\Users\grace\source\repos\20201210(2)\20201210(2).cpp(130,23): warning C4305: “=”: 从“__int64”到“int”截断
+C:\Users\grace\source\repos\20201210(2)\20201210(2).cpp(130,15): warning C4309: “=”: 截断常量值
+  20201210(2).vcxproj -> C:\Users\grace\source\repos\20201210(2)\Debug\20201210(2).exe

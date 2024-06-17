@@ -1,0 +1,5 @@
+﻿  20201119(2).cpp
+C:\Users\grace\source\repos\20201119(2)\20201119(2).cpp(22,15): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\grace\source\repos\20201119(2)\20201119(2).cpp(23,18): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\grace\source\repos\20201119(2)\20201119(2).cpp(24,19): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+  20201119(2).vcxproj -> C:\Users\grace\source\repos\20201119(2)\Debug\20201119(2).exe

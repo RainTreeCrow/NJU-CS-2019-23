@@ -1,0 +1,4 @@
+﻿  20201217(2).cpp
+C:\Users\grace\source\repos\20201217(2)\20201217(2).cpp(48,19): warning C4101: “temp_len”: 未引用的局部变量
+C:\Users\grace\source\repos\20201217(2)\20201217(2).cpp(48,9): warning C4101: “temp_cat”: 未引用的局部变量
+  20201217(2).vcxproj -> C:\Users\grace\source\repos\20201217(2)\Debug\20201217(2).exe

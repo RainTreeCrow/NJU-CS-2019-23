@@ -1,0 +1,9 @@
+﻿  20201210(3)(2).cpp
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(55,29): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(102,28): warning C4305: “=”: 从“__int64”到“int”截断
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(102,20): warning C4309: “=”: 截断常量值
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(103,28): warning C4305: “=”: 从“__int64”到“int”截断
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(103,20): warning C4309: “=”: 截断常量值
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(104,28): warning C4305: “=”: 从“__int64”到“int”截断
+C:\Users\grace\source\repos\20201210(3)(2)\20201210(3)(2).cpp(104,20): warning C4309: “=”: 截断常量值
+  20201210(3)(2).vcxproj -> C:\Users\grace\source\repos\20201210(3)(2)\Debug\20201210(3)(2).exe
