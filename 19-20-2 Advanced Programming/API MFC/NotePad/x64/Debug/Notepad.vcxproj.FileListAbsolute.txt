@@ -1,0 +1,2 @@
+C:\Users\grace\Desktop\Notepad\x64\Debug\Notepad.exe
+C:\Users\grace\Desktop\Notepad\x64\Debug\Notepad.pdb

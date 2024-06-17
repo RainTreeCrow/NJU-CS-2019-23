@@ -1,0 +1,6 @@
+﻿  Tank.cpp
+C:\Users\grace\Desktop\Tank\Tank.cpp(52,22): warning C4838: 从“int”转换到“SHORT”需要收缩转换
+C:\Users\grace\Desktop\Tank\Tank.cpp(52,30): warning C4838: 从“int”转换到“SHORT”需要收缩转换
+C:\Users\grace\Desktop\Tank\Tank.cpp(1227,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+C:\Users\grace\Desktop\Tank\Tank.cpp(316): warning C4715: “Map::check_tank_route”: 不是所有的控件路径都返回值
+  Tank.vcxproj -> C:\Users\grace\Desktop\Tank\Debug\Tank.exe

@@ -1,0 +1,2 @@
+C:\Users\grace\Desktop\API MFC\MFCVersion\Debug\MFCVersion.exe
+C:\Users\grace\Desktop\API MFC\MFCVersion\Debug\MFCVersion.pdb

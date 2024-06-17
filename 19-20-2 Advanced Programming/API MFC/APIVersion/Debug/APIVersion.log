@@ -1,0 +1,4 @@
+﻿  APIVersion.cpp
+C:\Users\grace\Desktop\APIVersion\APIVersion.cpp(227,55): warning C4244: “参数”: 从“double”转换到“UINT”，可能丢失数据
+C:\Users\grace\Desktop\APIVersion\APIVersion.cpp(228,55): warning C4244: “参数”: 从“double”转换到“UINT”，可能丢失数据
+  APIVersion.vcxproj -> C:\Users\grace\Desktop\APIVersion\Debug\APIVersion.exe

@@ -1,0 +1,8 @@
+﻿  第六次作业.cpp
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(137,20): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(138,19): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(139,23): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(151,1): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(152,1): warning C4244: “+=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\第六次作业.cpp(153,1): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
+  第六次作业.vcxproj -> C:\Users\grace\Desktop\高级程设\常规作业\第六次作业\Debug\第六次作业.exe

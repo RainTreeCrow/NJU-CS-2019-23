@@ -1,0 +1,2 @@
+C:\Users\grace\Desktop\MusicPlayer\Debug\MusicPlayer.exe
+C:\Users\grace\Desktop\MusicPlayer\Debug\MusicPlayer.pdb
