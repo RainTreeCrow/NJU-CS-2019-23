@@ -1,0 +1,5 @@
+﻿  二部图.cpp
+C:\Users\16837\source\repos\二部图\二部图\二部图.cpp(56,27): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\16837\source\repos\二部图\二部图\二部图.cpp(94,23): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\16837\source\repos\二部图\二部图\二部图.cpp(100,23): warning C4018: “<”: 有符号/无符号不匹配
+  二部图.vcxproj -> C:\Users\16837\source\repos\二部图\Debug\二部图.exe
