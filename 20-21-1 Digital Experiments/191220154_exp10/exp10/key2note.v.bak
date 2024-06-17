@@ -1,0 +1,59 @@
+module key2note(
+	input Clk,
+	input clrn,
+	output reg en,
+	output reg [15:0] freq,
+	inout ps2_clk,
+	inout ps2_dat,
+	output reg [8:0]volumn
+);
+
+	initial begin
+		volumn = 9'h79;
+	end
+
+	wire [7:0] code;
+	wire ready,overflow;
+	reg nextdata = 0;
+	reg flag = 0;
+	reg [7:0] scancode;
+	
+	ps2_keyboard board(clk,clrn,ps2_clk,ps2_dat,code,ready,nextdata,overflow);
+
+	always @ (posedge CLOCK_50) begin
+		if (ready && nextdata == 1'b1) begin
+			nextdata <= 0;
+			scancode <= code;
+			if (code == 8'h4c) volumn <= volumn - 9'd5;
+			else if (code == 8'h52) volumn <= volumn + 9'd5;
+			else volumn <= volumn;
+
+			if (code == 8'hf0) flag <= 1;
+			else begin
+				if (flag) begin
+					en <= 0;
+					flag <= 0;
+				end
+				else en <= 1;
+			end
+		end
+		else nextdata <= 1;
+	end
+
+	always @(scancode) begin
+		case (scancode)
+			8'h15	 : freq = 16'd714;
+			8'h1d	 : freq = 16'd801;
+			8'h24	 : freq = 16'd900;
+			8'h2d	 : freq = 16'd953;
+			8'h2c	 : freq = 16'd1070;
+			8'h35	 : freq = 16'd1201;
+			8'h3c	 : freq = 16'd1348;
+			8'h43	 : freq = 16'd1428;
+			8'h44  : 
+			8'h4d  : 
+			default: freq = 16'd0;
+		endcase
+	end
+
+endmodule

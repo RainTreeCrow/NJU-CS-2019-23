@@ -1,0 +1,6 @@
+module Game(
+
+);
+
+	reg [1:0] direction;
+	reg [1:0] board [1199:0];

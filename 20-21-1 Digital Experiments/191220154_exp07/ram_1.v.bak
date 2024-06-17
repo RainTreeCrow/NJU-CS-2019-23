@@ -1,0 +1,24 @@
+module ram_1(clk,we,inaddr,outaddr,din,dout);
+	input clk;
+	input we;
+	input [2:0] inaddr;
+	input [2:0] outaddr;
+	input [2:0] din;
+	output reg [7:0] dout;
+	
+	reg [7:0] ram [7:0];
+	reg [7:0] dout0,dout1;
+
+	initial begin
+		$readmemh("",ram,0,15);
+	end
+
+	always @(posedge clk) begin
+		if (we) begin
+			ram[inaddr][2:0] <= din;
+			ram[inaddr][7:3] <= 6'b000000;
+		end
+		else
+			dout <= ram[outaddr];
+	end
+endmodule

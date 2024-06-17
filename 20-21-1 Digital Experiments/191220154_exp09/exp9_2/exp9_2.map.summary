@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sun Nov 15 15:25:51 2020
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : exp9_2
+Top-level Entity Name : exp9_2
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 65
+Total pins : 43
+Total virtual pins : 0
+Total block memory bits : 3,932,160
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

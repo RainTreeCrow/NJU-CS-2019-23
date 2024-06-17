@@ -1,0 +1,109 @@
+module control(
+   input clk,
+	input [7:0] ascii, 
+	output vga_clk,
+	output valid,
+	output hsync,
+	output vsync,
+	output [7:0] vga_r,
+	output [7:0] vga_g,
+	output [7:0] vga_b,
+	output reg [11:0] preindex
+);
+
+	wire [9:0]h_addr;
+	wire [9:0]v_addr;
+	wire [23:0]vga;
+	wire [8:0]font;
+	reg [23:0]data = 24'hffffff;
+	reg [11:0]address;
+	reg [11:0]block_addr = 0;
+	reg [7:0] ascii_data;
+	reg [11:0]index = 0;
+	reg flag =1'b1;
+	wire [7:0]ram_vga_ret;
+	wire vga_clk;
+	wire keyboard_clk;
+	wire [7:0]now_ascii;
+	reg backspace_state = 1;
+	reg enter_state = 1;
+	reg [11:0]ram_index[29:0];
+	reg [3:0]cnt = 0;
+	
+	assign VGA_R = vga[23:16];
+	assign VGA_G = vga[15:8];
+	assign VGA_B = vga[7:0];
+
+	clkgen #25000000 clk_v(clk,1'b0,1'b1,vga_clk);
+	clkgen #20 clk_k(clk,1'b0,1'b1,keyboard_clk);
+	vga_ctrl v_C(clk_vga,1'b0,data,h_addr,v_addr,hsync,vsync,valid,vga[23:16],vga[15:8],vga[7:0]);
+	rom_font rf(.address(address),.clock(clk_vga),.q(font));
+	ram_vga rv(block_addr,index,clk_vga,clk_keyboard,1'b0,ascii_data,1'b0,1'b1,ram_vga_ret,now_ascii);
+
+	always @(keyboard_clk) begin
+		if(index < 12'd70) preindex <= 0;
+		else preindex <= ram_index[(index / 70) - 1];
+	end
+
+	always @(vga_clk) begin
+		block_addr <= (v_addr >> 3) * 35 + (h_addr / 9);
+		address <= (ram_vga_ret << 4) + (v_addr & 15);
+		if(font[h_addr % 9] == 1'b1) data <= 24'hffffff;
+		else data <= 24'h000000;
+	end	
+
+	always @(posedge clk_keyboard) begin
+		if(ascii != 0) begin
+			if(cnt == 0) begin
+				if(ascii == 8'h0d) begin
+					 backspace_state <= 0;
+					 ram_index[index / 70] <= index + 1;
+                index <= index + 70 - (index % 70);
+					 enter_state <= 0;
+				end
+				else if(ascii == 8'h08) begin
+					if(backspace_state == 0)begin
+						index <= index;
+						backspace_state <= 1'b1;
+					end
+					else begin
+						if(index % 70 == 0) index <= preindex;
+						else index <= index - 1;
+					end
+				end
+				else begin
+					 if(backspace_state || !enter_state) index <= index;
+					 else begin
+						if((index + 1) % 70 == 0) ram_index[(index - 1) / 70] <= index;
+						index <= index + 1;
+					 end
+					 backspace_state <= 0;
+					 enter_state <= 1;
+				end
+				cnt <= cnt + 1;
+			end
+			else if(cnt == 4'd12) begin
+				if(ascii == 8'h0d) index <= index + 70 - (index % 70) - 1;
+				else if (ascii == 8'h08) begin
+					if(index % 70 == 0) index <= preindex;
+					else index <= index - 1;
+				end
+				else begin
+					if((index + 1) % 70 == 0) ram_index[(index-1)/70] <= index;							
+					index <= index + 1;
+				end
+			end
+			else begin
+				index <= index;
+				cnt <= cnt + 1;
+			end
+			ascii_data <= ascii;
+		end
+		else begin		  
+			index <= index;
+			cnt <= 0;
+		end
+		if(index >= 2100) index <= 0;
+	end
+
+endmodule

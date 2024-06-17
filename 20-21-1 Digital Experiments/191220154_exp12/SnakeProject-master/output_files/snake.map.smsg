@@ -1,0 +1,3 @@
+Warning (10268): Verilog HDL information at snake.v(417): always construct contains both blocking and non-blocking assignments File: C:/Users/grace/Desktop/Digital Design/SnakeProject-master/snake.v Line: 417
+Warning (10268): Verilog HDL information at snake.v(503): always construct contains both blocking and non-blocking assignments File: C:/Users/grace/Desktop/Digital Design/SnakeProject-master/snake.v Line: 503
+Info (10281): Verilog HDL Declaration information at snake.v(302): object "restart" differs only in case from object "RESTART" in the same scope File: C:/Users/grace/Desktop/Digital Design/SnakeProject-master/snake.v Line: 302

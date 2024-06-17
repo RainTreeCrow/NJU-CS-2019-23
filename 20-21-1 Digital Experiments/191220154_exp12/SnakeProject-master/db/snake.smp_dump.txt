@@ -1,0 +1,34 @@
+
+State Machine - |snake|combined:u0|control:u0|current_state
+Name current_state.DRAW_TUNNEL2 current_state.DRAW_TUNNEL1 current_state.DRAW_OBSTACLE2 current_state.DRAW_OBSTACLE1 current_state.RESTART current_state.DELAY current_state.UPDATE_FOOD current_state.UPDATE_HEAD current_state.DRAW_NEW4 current_state.DRAW_NEW3 current_state.DRAW_NEW2 current_state.DRAW_NEW1 current_state.CHECK current_state.UPDATE_POSITION1 current_state.UPDATE_POSITION current_state.SHIFT current_state.ERASE_TAIL current_state.WAIT current_state.DRAW_FOOD current_state.DRAW_TAIL current_state.DRAW_BODY2 current_state.DRAW_BODY1 current_state.DRAW_HEAD current_state.START 
+current_state.START 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+current_state.DRAW_HEAD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+current_state.DRAW_BODY1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+current_state.DRAW_BODY2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+current_state.DRAW_TAIL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+current_state.DRAW_FOOD 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+current_state.WAIT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+current_state.ERASE_TAIL 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+current_state.SHIFT 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+current_state.UPDATE_POSITION 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+current_state.UPDATE_POSITION1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+current_state.CHECK 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_NEW1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_NEW2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_NEW3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_NEW4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.UPDATE_HEAD 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.UPDATE_FOOD 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DELAY 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.RESTART 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_OBSTACLE1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_OBSTACLE2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_TUNNEL1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+current_state.DRAW_TUNNEL2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |snake|combined:u0|control:u0|direction
+Name direction.00 direction.10 direction.01 direction.11 
+direction.11 0 0 0 0 
+direction.01 0 0 1 1 
+direction.10 0 1 0 1 
+direction.00 1 0 0 1 

@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at key2note.v(23): always construct contains both blocking and non-blocking assignments File: D:/workspace/exp10/key2note.v Line: 23
+Info (10281): Verilog HDL Declaration information at exp10.v(15): object "KEY" differs only in case from object "key" in the same scope File: D:/workspace/exp10/exp10.v Line: 15

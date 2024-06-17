@@ -1,0 +1,92 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/carso/Documents/GitHub/dont_kill/sequence_drawing_module
+vcontrol_draw
+Z1 !s110 1511924087
+!i10b 1
+!s100 Pf;DkSaOG^dh`;:]UT^M:3
+IWfW`DDf^<R2oX>9faFihS3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1511924029
+Z4 8VGA_score.v
+Z5 FVGA_score.v
+L0 81
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1511924086.000000
+Z8 !s107 VGA_score.v|
+Z9 !s90 -reportprogress|300|VGA_score.v|
+!i113 1
+Z10 tCvgOpt 0
+vdatapath_draw
+R1
+!i10b 1
+!s100 R<OM0gkbNeWP7HQn3ia:H3
+IKEhCMc:baJL@AQ7SK4Nc_2
+R2
+R0
+R3
+R4
+R5
+L0 203
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vRateDivider
+R1
+!i10b 1
+!s100 >?jc:=GJ18Bl9iMANPF_03
+Ij>kSYW21f92H9HR>;DdM=0
+R2
+R0
+R3
+R4
+R5
+L0 298
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@rate@divider
+vVGA_score
+R1
+!i10b 1
+!s100 PS1iPA;55ZT[ej:5L9SCg1
+I9faAzO^>?4]G<kd3W7QMM0
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@v@g@a_score

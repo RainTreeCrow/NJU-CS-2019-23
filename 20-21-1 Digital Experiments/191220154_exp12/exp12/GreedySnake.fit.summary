@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Dec 27 19:13:13 2020
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : GreedySnake
+Top-level Entity Name : GreedySnake
+Family : Cyclone V
+Device : 5CSXFC6D6F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 7,565 / 41,910 ( 18 % )
+Total registers : 3538
+Total pins : 150 / 499 ( 30 % )
+Total virtual pins : 0
+Total block memory bits : 655,424 / 5,662,720 ( 12 % )
+Total RAM Blocks : 81 / 553 ( 15 % )
+Total DSP Blocks : 0 / 112 ( 0 % )
+Total HSSI RX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA RX Deserializers : 0 / 9 ( 0 % )
+Total HSSI TX PCSs : 0 / 9 ( 0 % )
+Total HSSI PMA TX Serializers : 0 / 9 ( 0 % )
+Total PLLs : 0 / 15 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )
