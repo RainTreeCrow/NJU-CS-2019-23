@@ -1,0 +1,2 @@
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理升级版\Debug\学生信息管理升级版.exe
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理升级版\Debug\学生信息管理升级版.pdb

@@ -1,0 +1,55 @@
+﻿  学生信息管理系统.cpp
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(16,13): error C2143: 语法错误: 缺少“;”(在“*”的前面)
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(16,13): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(16,18): error C2238: 意外的标记位于“;”之前
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(17,8): error C2143: 语法错误: 缺少“;”(在“*”的前面)
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(17,8): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(17,12): error C2238: 意外的标记位于“;”之前
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(151,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(152,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(356,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(363,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(493,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(494,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(624,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(625,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(626,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(627,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(631,1): error C2039: “STU”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(641,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(642,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(656,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(658,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(666,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(680,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(682,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(767,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(768,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(773,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(776,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(837,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(844,1): error C2039: “TA”: 不是“Course”的成员
+C:\Users\grace\Desktop\程设实验\实验一\学生信息管理系统\学生信息管理系统.cpp(9): message : 参见“Course”的声明

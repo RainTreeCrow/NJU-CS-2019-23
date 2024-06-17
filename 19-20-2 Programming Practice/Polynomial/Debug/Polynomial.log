@@ -1,0 +1,8 @@
+﻿  Polynomial.cpp
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(490,28): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(504,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(599,25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(663,25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(722,25): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\grace\Desktop\程设实验\Polynomial\Polynomial.cpp(752,23): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  Polynomial.vcxproj -> C:\Users\grace\Desktop\程设实验\Polynomial\Debug\Polynomial.exe
