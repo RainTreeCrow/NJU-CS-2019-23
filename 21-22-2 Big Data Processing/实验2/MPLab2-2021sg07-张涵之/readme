@@ -1,0 +1,3 @@
+hadoop jar InvertedIndexer.jar /chinese_novels /inverted_output
+hadoop jar Sort.jar /inverted_output /sort_output
+hadoop jar TF-IDF.jar /inverted_output /tfidf_output /chinese_novels
