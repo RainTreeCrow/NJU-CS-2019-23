@@ -1,0 +1,698 @@
+# Copyright (C) 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994,
+#     1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004,
+#     2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
+#     2015, 2016, 2017, 2018, 2019 Massachusetts Institute of
+#     Technology
+#
+# This file is part of MIT/GNU Scheme.
+#
+# MIT/GNU Scheme is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# MIT/GNU Scheme is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MIT/GNU Scheme; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+# 02110-1301, USA.
+
+# **** BEGIN BOILERPLATE ****
+
+SHELL = @SHELL@
+
+@SET_MAKE@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+DESTDIR =
+top_builddir = @top_builddir@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+LN_S = @LN_S@
+ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+mkinstalldirs = $(SHELL) $(top_srcdir)/microcode/mkinstalldirs
+
+# **** END BOILERPLATE ****
+
+LIARC_BOOT_BUNDLES = compiler cref sf star-parser
+LIARC_BUNDLES = $(LIARC_BOOT_BUNDLES) ffi sos ssp xml
+
+SUBDIRS = $(INSTALLED_SUBDIRS) win32 xdoc
+INSTALLED_SUBDIRS = microcode runtime $(OPTION_SUBDIRS) $(LIARC_BUNDLES)
+OPTION_SUBDIRS = @OPTION_SUBDIRS@
+
+MIT_SCHEME_EXE = @MIT_SCHEME_EXE@
+AUXDIR_NAME = @AUXDIR_NAME@
+AUXDIR = @AUXDIR@
+
+@IF_CROSS@COMPILER_SETTINGS_CROSS = (set! compiler:cross-compiling? true)
+@IF_CROSS@SF_SETTINGS_CROSS = \
+@IF_CROSS@	(set! sf/cross-compiling? true) \
+@IF_CROSS@	(set! package/cross-compiling? true)
+@IF_LIARC@COMPILER_SETTINGS_LIARC = (set! compiler:invoke-c-compiler? false)
+HOST_COMPILER_HEAP = @HOST_COMPILER_HEAP@
+
+HOST_COMPILER_SETTINGS = \
+	$(SF_SETTINGS_CROSS) \
+	$(COMPILER_SETTINGS_CROSS) \
+	$(COMPILER_SETTINGS_LIARC)
+
+HOST_COMPILER = '$(MIT_SCHEME_EXE)' --batch-mode $(HOST_COMPILER_HEAP) --no-init-file \
+  --eval '(begin $(HOST_COMPILER_SETTINGS))' --load runtime/host-adapter.scm
+
+HOST_SF_ONLY = '$(MIT_SCHEME_EXE)' --batch-mode $(HOST_COMPILER_HEAP) \
+  --band runtime.com --no-init-file --eval '(load-option (quote sf))' \
+  --load runtime/host-adapter.scm
+
+MODULE_SCHEME_FLAGS = --load ../runtime/host-adapter.scm
+
+# This rule is for LIARC.
+.SUFFIXES: .bld .pkd .c
+.pkd.c .bld.c:
+	echo '(cbf "$<")' | $(HOST_COMPILER)
+
+.PHONY: default-target
+default-target: @DEFAULT_TARGET@
+
+.PHONY: all
+all: @ALL_TARGET@
+
+.PHONY: all-native
+all-native: microcode/scheme
+all-native: lib/runtime.com
+all-native: lib/all.com
+all-native: all-compiler
+all-native: all-cref
+all-native: all-ffi
+all-native: all-runtime
+all-native: all-sf
+all-native: all-sos
+all-native: all-ssp
+all-native: all-star-parser
+all-native: all-win32
+all-native: all-xml
+@IF_BLOWFISH@all-native: all-blowfish
+@IF_EDWIN@all-native: all-edwin
+@IF_GDBM@all-native: all-gdbm
+@IF_IMAIL@all-native: all-imail
+@IF_MCRYPT@all-native: all-mcrypt
+@IF_PGSQL@all-native: all-pgsql
+@IF_X11@all-native: all-x11
+@IF_X11_SCREEN@all-native: all-x11-screen
+
+# XXX This should really depend on microcode/gen-nonce and
+# microcode/extract-liarc-decls instead of microcode/scheme, but
+# splitting up dependencies within the microcode subdirectory is more
+# trouble than it's worth right now.  Later, we should reorganize the
+# directory structure to better reflect the build rather than just
+# shoving all the C code into microcode/.
+.PHONY: liarc-bundle-tools
+liarc-bundle-tools: microcode/scheme
+
+################
+# Microcode
+################
+
+@IF_LIARC@microcode/scheme: all-runtime
+@IF_SVM@microcode/scheme: microcode/svm1-defns.h
+microcode/scheme:
+	(cd microcode && $(MAKE) all)
+
+.PHONY: compile-microcode
+compile-microcode: microcode/scheme
+@IF_BLOWFISH@compile-microcode: compile-blowfish-c
+@IF_GDBM@compile-microcode: compile-gdbm-c
+@IF_MCRYPT@compile-microcode: compile-mcrypt-c
+@IF_PGSQL@compile-microcode: compile-pgsql-c
+@IF_X11@compile-microcode: compile-x11-c
+
+stamp_install-microcode: compile-microcode
+	(cd microcode; $(MAKE) install)
+	echo "done" > $@
+
+microcode/svm1-defns.h: compiler/machines/svm/svm1-defns.h
+	@$(top_srcdir)/etc/maybe-update-file.sh \
+	  compiler/machines/svm/svm1-defns.h \
+	  microcode/svm1-defns.h
+
+################
+# Bands
+################
+
+lib/runtime.com: microcode/scheme
+lib/runtime.com: all-runtime
+@IF_CROSS@lib/runtime.com: stamp_cross-finished
+	(. etc/functions.sh && get_fasl_file && cd runtime \
+	  && (echo '(disk-save "../$@")' \
+	       | ../run-build --batch-mode --fasl "$${FASL}"))
+
+lib/all.com: microcode/scheme
+lib/all.com: lib/runtime.com
+lib/all.com: all-compiler
+lib/all.com: all-sf
+lib/all.com: all-cref
+@IF_CROSS@lib/all.com: stamp_cross-finished
+	(echo '(begin' && \
+	 echo '  (load-option (quote compiler))' && \
+	 echo '  (load-option (quote sf))' && \
+	 echo '  (disk-save "$@"))') \
+	| ./run-build --batch-mode --band runtime.com
+
+################
+# Runtime
+################
+
+.PHONY: all-runtime
+all-runtime: compile-runtime
+@IF_LIARC@all-runtime: bundle-runtime
+
+.PHONY: compile-runtime
+compile-runtime:
+	(echo '(with-working-directory-pathname "runtime"' && \
+	 echo '  (lambda () (load "runtime.sf") (load "runtime.cbf")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-runtime
+bundle-runtime: runtime/runtime-unx.c
+
+################
+# SF
+################
+
+.PHONY: all-sf
+all-sf: compile-sf
+@IF_LIARC@all-sf: bundle-sf
+
+.PHONY: compile-sf
+compile-sf:
+	(echo '(with-working-directory-pathname "sf"' && \
+	 echo '  (lambda () (load "sf.sf") (load "sf.cbf")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-sf
+bundle-sf: liarc-bundle-tools
+bundle-sf: compile-sf
+bundle-sf: sf/sf-unx.c
+	(cd sf && $(MAKE) compile-liarc-bundle)
+
+#################
+# Compiler (LIAR)
+#################
+
+.PHONY: all-compiler
+all-compiler: compile-compiler
+@IF_LIARC@all-compiler: bundle-compiler
+
+.PHONY: syntax-compiler
+syntax-compiler: compile-sf
+@IF_SVM_COMPILER@syntax-compiler: compiler/machines/svm/svm1-defns.h
+	(echo '(with-working-directory-pathname "compiler"' && \
+	 echo '  (lambda ()' && \
+	 echo '    $(SF_SETTINGS_CROSS)' && \
+	 echo '    (load "compiler.sf")))') \
+	| $(HOST_SF_ONLY)
+
+.PHONY: compile-compiler
+compile-compiler: syntax-compiler
+	(echo '(with-working-directory-pathname "compiler"' && \
+	 echo '  (lambda () (load "compiler.cbf")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-compiler
+bundle-compiler: liarc-bundle-tools
+bundle-compiler: compile-compiler
+bundle-compiler: compiler/compiler-unx.c
+	(cd compiler && $(MAKE) compile-liarc-bundle)
+
+compiler/machines/svm/svm1-defns.h: \
+	  compiler/machines/svm/assembler-rules.scm \
+	  compiler/machines/svm/machine.scm \
+	  compiler/machines/svm/assembler-compiler.scm \
+	  compiler/machines/svm/assembler-runtime.scm \
+	  compiler/machines/svm/compile-assembler.scm
+	(echo '(with-working-directory-pathname "compiler/machines/svm"' && \
+	 echo '  (lambda () (load "compile-assembler")))') \
+	| $(HOST_SF_ONLY)
+
+################
+# CREF
+################
+
+.PHONY: all-cref
+all-cref: compile-cref
+@IF_LIARC@all-cref: bundle-cref
+
+.PHONY: compile-cref
+compile-cref: compile-runtime
+	(echo '(with-working-directory-pathname "cref"' && \
+	 echo '  (lambda () (load "cref.sf") (load "cref.cbf")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-cref
+bundle-cref: liarc-bundle-tools
+bundle-cref: compile-cref
+bundle-cref: cref/cref-unx.c
+	(cd cref && $(MAKE) compile-liarc-bundle)
+
+################
+# *PARSER
+################
+
+.PHONY: all-star-parser
+all-star-parser: compile-star-parser
+@IF_LIARC@all-star-parser: bundle-star-parser
+
+.PHONY: compile-star-parser
+compile-star-parser: compile-runtime
+	(echo '(with-working-directory-pathname "star-parser"' && \
+	 echo '  (lambda () (load "compile")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-star-parser
+bundle-star-parser: liarc-bundle-tools
+bundle-star-parser: compile-star-parser
+bundle-star-parser: star-parser/parser-unx.c
+	(cd star-parser && $(MAKE) compile-liarc-bundle)
+
+### More stuff we build with tools.  We could build it with the newly
+### built compiler in the native case, but we want to avoid having to
+### do that to encourage cross-compilation.
+
+################
+# FFI
+################
+
+.PHONY: all-ffi
+all-ffi: compile-ffi
+@IF_LIARC@all-ffi: bundle-ffi
+
+.PHONY: compile-ffi
+compile-ffi: compile-runtime
+	(echo '(with-working-directory-pathname "ffi"' && \
+	 echo '  (lambda () (load "compile.scm")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-ffi
+bundle-ffi: liarc-bundle-tools
+bundle-ffi: compile-ffi
+bundle-ffi: ffi/ffi-unx.c
+	(cd ffi && $(MAKE) compile-liarc-bundle)
+
+################
+# SOS
+################
+
+.PHONY: all-sos
+all-sos: compile-sos
+@IF_LIARC@all-sos: bundle-sos
+
+.PHONY: compile-sos
+compile-sos: compile-runtime
+	(echo '(with-working-directory-pathname "sos"' && \
+	 echo '  (lambda () (load "compile")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-sos
+bundle-sos: liarc-bundle-tools
+bundle-sos: compile-sos
+bundle-sos: sos/sos-unx.c
+	(cd sos && $(MAKE) compile-liarc-bundle)
+
+################
+# SSP
+################
+
+.PHONY: all-ssp
+all-ssp: compile-ssp
+@IF_LIARC@all-ssp: bundle-ssp
+
+.PHONY: compile-ssp
+compile-ssp: compile-runtime compile-xml
+	(echo '(with-working-directory-pathname "ssp"' && \
+	 echo '  (lambda () (load "compile")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-ssp
+bundle-ssp: liarc-bundle-tools
+bundle-ssp: compile-ssp
+bundle-ssp: ssp/ssp-unx.c
+	(cd ssp && $(MAKE) compile-liarc-bundle)
+
+################
+# Windows FFI
+################
+
+.PHONY: all-win32
+all-win32: compile-win32
+
+.PHONY: compile-win32
+compile-win32: compile-runtime
+	(echo '(with-working-directory-pathname "win32"' && \
+	 echo '  (lambda () (load "win32.sf") (load "win32.cbf")))') \
+	| $(HOST_COMPILER)
+
+################
+# XML
+################
+
+.PHONY: all-xml
+all-xml: compile-xml
+@IF_LIARC@all-xml: bundle-xml
+
+.PHONY: compile-xml
+compile-xml: compile-runtime compile-sos compile-star-parser
+	(echo '(with-working-directory-pathname "xml"' && \
+	 echo '  (lambda () (load "compile")))') \
+	| $(HOST_COMPILER)
+
+.PHONY: bundle-xml
+bundle-xml: liarc-bundle-tools
+bundle-xml: compile-xml
+bundle-xml: xml/xml-unx.c
+	(cd xml && $(MAKE) compile-liarc-bundle)
+
+################
+# blowfish
+################
+
+.PHONY: all-blowfish
+all-blowfish: compile-blowfish
+
+.PHONY: compile-blowfish
+compile-blowfish: compile-runtime compile-ffi
+	(cd blowfish && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+.PHONY: compile-blowfish-c
+compile-blowfish-c:
+	(cd blowfish && $(MAKE))
+
+################
+# edwin
+################
+
+.PHONY: all-edwin
+all-edwin: compile-edwin
+
+.PHONY: compile-edwin
+compile-edwin: compile-runtime compile-xml
+@IF_BLOWFISH@compile-edwin: compile-blowfish
+@IF_GDBM@compile-edwin: compile-gdbm
+@IF_X11@compile-edwin: compile-x11
+	(cd edwin && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+################
+# gdbm
+################
+
+.PHONY: all-gdbm
+all-gdbm: compile-gdbm
+
+.PHONY: compile-gdbm
+compile-gdbm: compile-runtime compile-ffi
+	(cd gdbm && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+.PHONY: compile-gdbm-c
+compile-gdbm-c:
+	(cd gdbm && $(MAKE))
+
+################
+# imail
+################
+
+.PHONY: all-imail
+all-imail: compile-imail
+
+.PHONY: compile-imail
+compile-imail: compile-runtime compile-sos compile-edwin compile-star-parser
+	(cd imail && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+################
+# mcrypt
+################
+
+.PHONY: all-mcrypt
+all-mcrypt: compile-mcrypt
+
+.PHONY: compile-mcrypt
+compile-mcrypt: compile-runtime compile-ffi
+	(cd mcrypt && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+.PHONY: compile-mcrypt-c
+compile-mcrypt-c:
+	(cd mcrypt && $(MAKE))
+
+################
+# pgsql
+################
+
+.PHONY: all-pgsql
+all-pgsql: compile-pgsql
+
+.PHONY: compile-pgsql
+compile-pgsql: compile-runtime compile-ffi
+	(cd pgsql && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+.PHONY: compile-pgsql-c
+compile-pgsql-c:
+	(cd pgsql && $(MAKE))
+
+################
+# X11
+################
+
+.PHONY: all-x11
+all-x11: compile-x11
+
+.PHONY: compile-x11
+compile-x11: compile-runtime compile-ffi
+	(cd x11 && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+.PHONY: compile-x11-c
+compile-x11-c:
+	(cd x11 && $(MAKE))
+
+################
+# X11-screen
+################
+
+.PHONY: all-x11-screen
+all-x11-screen: compile-x11-screen
+
+.PHONY: compile-x11-screen
+compile-x11-screen: compile-runtime compile-x11 compile-edwin
+	(cd x11-screen && MIT_SCHEME_EXE='$(MIT_SCHEME_EXE)' MIT_SCHEME_FLAGS='$(MODULE_SCHEME_FLAGS)' $(MAKE))
+
+#####################
+### Cross compilation
+#####################
+
+# We split this up into two targets, cross-host and cross-target, so
+# that you can type `make cross-host' to do everything on the
+# cross-compilation host, transfer everything over, and then run `make
+# target' to do the rest.
+#
+# Anything that depends on running the target code should depend on
+# cross-target, and there should be a plan for obviating the need to
+# run the target code.
+
+.PHONY: cross-host
+cross-host: compile-compiler
+cross-host: compile-cref
+cross-host: compile-ffi
+cross-host: compile-runtime
+cross-host: compile-sf
+cross-host: compile-sos
+cross-host: compile-ssp
+cross-host: compile-star-parser
+cross-host: compile-win32
+cross-host: compile-xml
+	echo "done" > stamp_$@
+
+.PHONY: cross-target
+cross-target: stamp_cross-finished lib/runtime.com lib/all.com
+
+stamp_cross-finished: stamp_cross-host microcode/scheme
+	(echo '(let ((env (->environment (quote (runtime)))))' && \
+	 echo '  (load "../compiler/base/crsend" env)' && \
+	 echo '  ((access finish-cross-compilation:files env) ".."))') \
+	| (cd runtime && ../run-build --batch-mode --fasl make.bin)
+	(echo '(let ((env (->environment (quote (runtime)))))' && \
+	 echo '  (load "../compiler/base/crsend" env)' && \
+	 echo '  ((access finish-cross-compilation:info-files env) ".."))') \
+	 | (cd runtime && ../run-build --batch-mode --fasl make.com)
+	echo "done" > $@
+
+################
+# Miscellany
+################
+
+.PHONY: check
+check:
+	./run-build --batch-mode --load ../tests/check.scm --eval '(%exit)'
+
+.PHONY: macosx-app
+macosx-app:
+	etc/macosx/make-app.sh
+
+.PHONY: mostlyclean clean distclean maintainer-clean c-clean
+mostlyclean clean distclean maintainer-clean c-clean:
+	$(top_srcdir)/Clean.sh $@ $(SUBDIRS) $(OPTION_SUBDIRS)
+
+.PHONY: clean-boot-root
+clean-boot-root:
+	rm -rf boot-root
+	rm -f stamp_*
+
+.PHONY: tags TAGS
+tags TAGS:
+	$(top_srcdir)/Tags.sh $(SUBDIRS)
+
+.PHONY: subdir-list
+subdir-list:
+	@for D in $(SUBDIRS); do echo $$D; done
+
+.PHONY: install
+install: install-standard @INSTALL_LIARC_BUNDLES@
+
+.PHONY: install-standard
+install-standard: install-auxdir-top
+	etc/make-in-subdirs.sh install $(INSTALLED_SUBDIRS)
+
+.PHONY: install-auxdir-top
+install-auxdir-top:
+	$(mkinstalldirs) $(DESTDIR)$(AUXDIR)
+	$(INSTALL_DATA) $(top_srcdir)/etc/optiondb.scm $(DESTDIR)$(AUXDIR)/.
+	$(INSTALL_DATA) $(top_srcdir)/etc/plugins.scm $(DESTDIR)$(AUXDIR)/.
+	$(INSTALL_DATA) lib/*.com $(DESTDIR)$(AUXDIR)/.
+
+################
+# Legacy
+################
+
+.PHONY: all-liarc
+all-liarc:
+	@$(top_srcdir)/etc/c-compile.sh "$(MIT_SCHEME_EXE)" --batch-mode --no-init-file
+	$(MAKE) compile-liarc-bundles build-bands
+
+.PHONY: build-bands
+build-bands:
+	@$(top_srcdir)/etc/build-bands.sh
+
+# **** Make liarc distribution from native ****
+
+.PHONY: liarc-dist
+liarc-dist:
+	@$(top_srcdir)/etc/compile-boot-compiler.sh "$(MIT_SCHEME_EXE)"
+	@$(top_srcdir)/etc/c-prepare.sh "$(MIT_SCHEME_EXE)"
+	$(MAKE) distclean
+
+# **** Build liarc from distribution ****
+
+stamp_compile-liarc-boot-bundles: stamp_install-microcode
+	etc/make-in-subdirs.sh compile-liarc-bundle $(LIARC_BOOT_BUNDLES)
+	echo "done" > $@
+
+stamp_install-liarc-boot-bundles: stamp_compile-liarc-boot-bundles
+	etc/make-in-subdirs.sh install-liarc-bundle $(LIARC_BOOT_BUNDLES)
+	echo "done" > $@
+
+stamp_build-liarc-boot-compiler: stamp_install-liarc-boot-bundles
+	@$(top_srcdir)/etc/build-boot-compiler.sh
+	echo "done" > $@
+
+stamp_install-liarc-boot-compiler: stamp_build-liarc-boot-compiler
+	$(MAKE) install-auxdir-top
+	echo "done" > $@
+
+stamp_liarc-compile-scheme:
+	@$(top_srcdir)/etc/c-compile.sh boot-root/bin/mit-scheme-c \
+	    --library boot-root/lib/mit-scheme-c --band boot-compiler.com
+	echo "done" > $@
+
+stamp_compile-liarc-bundles: stamp_liarc-compile-scheme compile-liarc-bundles
+	echo "done" > $@
+
+.PHONY: compile-liarc-bundles
+compile-liarc-bundles: compile-microcode
+	etc/make-in-subdirs.sh compile-liarc-bundle $(LIARC_BUNDLES)
+
+.PHONY: install-liarc-bundles
+install-liarc-bundles:
+	etc/make-in-subdirs.sh install-liarc-bundle $(LIARC_BUNDLES)
+
+# **** Build native from liarc ****
+
+stamp_build-native-boot-compiler: stamp_install-microcode
+	@$(top_srcdir)/etc/build-boot-compiler.sh
+	echo "done" > $@
+
+stamp_install-native-boot-compiler: stamp_build-native-boot-compiler
+	$(MAKE) install-auxdir-top
+	echo "done" > $@
+
+stamp_native-compile-scheme: compile-microcode
+	@$(top_srcdir)/etc/compile.sh boot-root/bin/mit-scheme \
+	    --library boot-root/lib/$(AUXDIR_NAME) --band boot-compiler.com
+	echo "done" > $@
+
+##########################
+### Save/restore utilities
+##########################
+
+.PHONY: save
+save:
+	@echo 'Saving objects...'
+	@rm -rf saved-objects && \
+	mkdir saved-objects && \
+	( \
+	  find $(SUBDIRS) -type f \
+	    \( \
+	      -name '*.bci' -o \
+	      -name '*.bin' -o \
+	      -name '*.c' -o \
+	      -name '*.com' -o \
+	      -name '*.crf' -o \
+	      -name '*.ext' -o \
+	      -name '*.fre' -o \
+	      -name '*.moc' -o \
+	      -name '*.o' -o \
+	      -name '*.pkd' -o \
+	      -name '*.so' -o \
+	      -false \
+	    \) \
+	    -print0 \
+	  | pax -rw -pe -l -v -d -0 saved-objects/. \
+	) || { rm -rf saved-objects; exit 1; }
+
+.PHONY: restore
+restore:
+	@echo 'Restoring objects...'
+	@if ! test -d saved-objects; then exit 1; fi && \
+	(cd saved-objects && pax -rw -pe -v . ../../.)

@@ -1,0 +1,876 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/*
+
+Copyright (C) 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994,
+    1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+    2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016,
+    2017, 2018, 2019 Massachusetts Institute of Technology
+
+This file is part of MIT/GNU Scheme.
+
+MIT/GNU Scheme is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+MIT/GNU Scheme is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with MIT/GNU Scheme; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301,
+USA.
+
+*/
+
+#ifndef SCM_CONFIG_H
+#define SCM_CONFIG_H
+
+/* Define if building universal (internal helper macro) */
+#undef AC_APPLE_UNIVERSAL_BUILD
+
+/* Define to 1 if the `getpgrp' function requires zero arguments. */
+#undef GETPGRP_VOID
+
+/* Define to 1 if you have the <assert.h> header file. */
+#undef HAVE_ASSERT_H
+
+/* Define to 1 if you have the <bsdtty.h> header file. */
+#undef HAVE_BSDTTY_H
+
+/* Define to 1 if you have the `clock_gettime' function. */
+#undef HAVE_CLOCK_GETTIME
+
+/* Define to 1 if you have the `closefrom' function. */
+#undef HAVE_CLOSEFROM
+
+/* Define to 1 if you have the `ctermid' function. */
+#undef HAVE_CTERMID
+
+/* Define to 1 if you have the <curses.h> header file. */
+#undef HAVE_CURSES_H
+
+/* Define if backslash-a works in C strings. */
+#undef HAVE_C_BACKSLASH_A
+
+/* Define to 1 if you have the declaration of `tzname', and to 0 if you don't.
+   */
+#undef HAVE_DECL_TZNAME
+
+/* Define to 1 if you have the <dirent.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_DIRENT_H
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you don't have `vprintf' but do have `_doprnt.' */
+#undef HAVE_DOPRNT
+
+/* Define to 1 if you have the `dup2' function. */
+#undef HAVE_DUP2
+
+/* Define to 1 if you have the `expm1' function. */
+#undef HAVE_EXPM1
+
+/* Define to 1 if you have the `fcntl' function. */
+#undef HAVE_FCNTL
+
+/* Define to 1 if you have the <fcntl.h> header file. */
+#undef HAVE_FCNTL_H
+
+/* Define to 1 if you have the `fdatasync' function. */
+#undef HAVE_FDATASYNC
+
+/* Define to 1 if you have the `feclearexcept' function. */
+#undef HAVE_FECLEAREXCEPT
+
+/* Define to 1 if you have the `fedisableexcept' function. */
+#undef HAVE_FEDISABLEEXCEPT
+
+/* Define to 1 if you have the `feenableexcept' function. */
+#undef HAVE_FEENABLEEXCEPT
+
+/* Define to 1 if you have the `fegetenv' function. */
+#undef HAVE_FEGETENV
+
+/* Define to 1 if you have the `fegetexcept' function. */
+#undef HAVE_FEGETEXCEPT
+
+/* Define to 1 if you have the `fegetexceptflag' function. */
+#undef HAVE_FEGETEXCEPTFLAG
+
+/* Define to 1 if you have the `fegetround' function. */
+#undef HAVE_FEGETROUND
+
+/* Define to 1 if you have the `feholdexcept' function. */
+#undef HAVE_FEHOLDEXCEPT
+
+/* Define to 1 if you have the <fenv.h> header file. */
+#undef HAVE_FENV_H
+
+/* Define to 1 if the system has the type `fenv_t'. */
+#undef HAVE_FENV_T
+
+/* Define to 1 if you have the `feraiseexcept' function. */
+#undef HAVE_FERAISEEXCEPT
+
+/* Define to 1 if you have the `fesetenv' function. */
+#undef HAVE_FESETENV
+
+/* Define to 1 if you have the `fesetexceptflag' function. */
+#undef HAVE_FESETEXCEPTFLAG
+
+/* Define to 1 if you have the `fesetround' function. */
+#undef HAVE_FESETROUND
+
+/* Define to 1 if you have the `fetestexcept' function. */
+#undef HAVE_FETESTEXCEPT
+
+/* Define to 1 if you have the `feupdateenv' function. */
+#undef HAVE_FEUPDATEENV
+
+/* Define to 1 if the system has the type `fexcept_t'. */
+#undef HAVE_FEXCEPT_T
+
+/* Define to 1 if you have the <float.h> header file. */
+#undef HAVE_FLOAT_H
+
+/* Define to 1 if you have the `floor' function. */
+#undef HAVE_FLOOR
+
+/* Define to 1 if you have the `fmod' function. */
+#undef HAVE_FMOD
+
+/* Define to 1 if you have the `fork' function. */
+#undef HAVE_FORK
+
+/* Define to 1 if you have the `fpathconf' function. */
+#undef HAVE_FPATHCONF
+
+/* Define to 1 if the system has the type `fpgetround fpsetround'. */
+#undef HAVE_FPGETROUND_FPSETROUND
+
+/* Define to 1 if you have the `frexp' function. */
+#undef HAVE_FREXP
+
+/* Define to 1 if you have the `fsync' function. */
+#undef HAVE_FSYNC
+
+/* Define to 1 if you have the `fsync_range' function. */
+#undef HAVE_FSYNC_RANGE
+
+/* Define to 1 if you have the `ftruncate' function. */
+#undef HAVE_FTRUNCATE
+
+/* Define to 1 if you have the `getcwd' function. */
+#undef HAVE_GETCWD
+
+/* Define to 1 if you have the `gethostbyname' function. */
+#undef HAVE_GETHOSTBYNAME
+
+/* Define to 1 if you have the `gethostname' function. */
+#undef HAVE_GETHOSTNAME
+
+/* Define to 1 if you have the `getlogin' function. */
+#undef HAVE_GETLOGIN
+
+/* Define to 1 if you have the `getpagesize' function. */
+#undef HAVE_GETPAGESIZE
+
+/* Define to 1 if you have the `getpgrp' function. */
+#undef HAVE_GETPGRP
+
+/* Define to 1 if you have the `getpt' function. */
+#undef HAVE_GETPT
+
+/* Define to 1 if you have the `gettimeofday' function. */
+#undef HAVE_GETTIMEOFDAY
+
+/* Define to 1 if you have the `getwd' function. */
+#undef HAVE_GETWD
+
+/* Define to 1 if you have the `grantpt' function. */
+#undef HAVE_GRANTPT
+
+/* Define if `struct hostent' has the `h_addr_list' member. */
+#undef HAVE_HOSTENT_H_ADDR_LIST
+
+/* Define to 1 if you have the <ieeefp.h> header file. */
+#undef HAVE_IEEEFP_H
+
+/* Define to 1 if the system has the type `intmax_t'. */
+#undef HAVE_INTMAX_T
+
+/* Define to 1 if the system has the type `intptr_t'. */
+#undef HAVE_INTPTR_T
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the `kill' function. */
+#undef HAVE_KILL
+
+/* Define to 1 if you have the `lgamma_r' function. */
+#undef HAVE_LGAMMA_R
+
+/* Define to 1 if you have the `dl' library (-ldl). */
+#undef HAVE_LIBDL
+
+/* Define to 1 if you have the `m' library (-lm). */
+#undef HAVE_LIBM
+
+/* Define to 1 if you have the <limits.h> header file. */
+#undef HAVE_LIMITS_H
+
+/* Define to 1 if you have the `lockf' function. */
+#undef HAVE_LOCKF
+
+/* Define to 1 if you have the `log1p' function. */
+#undef HAVE_LOG1P
+
+/* Define to 1 if you support file names longer than 14 characters. */
+#undef HAVE_LONG_FILE_NAMES
+
+/* Define to 1 if the system has the type `long long int'. */
+#undef HAVE_LONG_LONG_INT
+
+/* Define to 1 if you have the `madvise' function. */
+#undef HAVE_MADVISE
+
+/* Define to 1 if you have the <malloc.h> header file. */
+#undef HAVE_MALLOC_H
+
+/* Define to 1 if you have the `memcpy' function. */
+#undef HAVE_MEMCPY
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `mkdir' function. */
+#undef HAVE_MKDIR
+
+/* Define to 1 if you have the `mktime' function. */
+#undef HAVE_MKTIME
+
+/* Define to 1 if you have a working `mmap' system call. */
+#undef HAVE_MMAP
+
+/* Define to 1 if you have the `modf' function. */
+#undef HAVE_MODF
+
+/* Define to 1 if you have the <ncurses.h> header file. */
+#undef HAVE_NCURSES_H
+
+/* Define to 1 if you have the <ndir.h> header file, and it defines `DIR'. */
+#undef HAVE_NDIR_H
+
+/* Define to 1 if you have the <netdb.h> header file. */
+#undef HAVE_NETDB_H
+
+/* Define to 1 if you have the `nice' function. */
+#undef HAVE_NICE
+
+/* Define if `struct ntptimeval' has the `tai' member. */
+#undef HAVE_NTPTIMEVAL_TAI
+
+/* Define if `struct ntptimeval' has the `time.tv_nsec' member. */
+#undef HAVE_NTPTIMEVAL_TIME_TV_NSEC
+
+/* Define to 1 if you have the `ntp_adjtime' function. */
+#undef HAVE_NTP_ADJTIME
+
+/* Define to 1 if you have the `ntp_gettime' function. */
+#undef HAVE_NTP_GETTIME
+
+/* Define to 1 if you have the `openpty' function. */
+#undef HAVE_OPENPTY
+
+/* Define to 1 if you have the `poll' function. */
+#undef HAVE_POLL
+
+/* Define to 1 if you have the `pollts' function. */
+#undef HAVE_POLLTS
+
+/* Define to 1 if you have the <poll.h> header file. */
+#undef HAVE_POLL_H
+
+/* Define to 1 if you have the `posix_madvise' function. */
+#undef HAVE_POSIX_MADVISE
+
+/* Define to 1 if you have the `posix_openpt' function. */
+#undef HAVE_POSIX_OPENPT
+
+/* Define to 1 if you have the `ppoll' function. */
+#undef HAVE_PPOLL
+
+/* Define to 1 if you have the `prealloc' function. */
+#undef HAVE_PREALLOC
+
+/* Define to 1 if you have the `pselect' function. */
+#undef HAVE_PSELECT
+
+/* Define to 1 if you have the `rename' function. */
+#undef HAVE_RENAME
+
+/* Define to 1 if you have the `rmdir' function. */
+#undef HAVE_RMDIR
+
+/* Define to 1 if you have the `select' function. */
+#undef HAVE_SELECT
+
+/* Define to 1 if you have the `setitimer' function. */
+#undef HAVE_SETITIMER
+
+/* Define to 1 if you have the `setpgrp' function. */
+#undef HAVE_SETPGRP
+
+/* Define to 1 if you have the `setpgrp2' function. */
+#undef HAVE_SETPGRP2
+
+/* Define to 1 if you have the <sgtty.h> header file. */
+#undef HAVE_SGTTY_H
+
+/* Define to 1 if you have the `shmat' function. */
+#undef HAVE_SHMAT
+
+/* Define to 1 if you have the `sigaction' function. */
+#undef HAVE_SIGACTION
+
+/* Define to 1 if you have the `sighold' function. */
+#undef HAVE_SIGHOLD
+
+/* Define to 1 if you have the <signal.h> header file. */
+#undef HAVE_SIGNAL_H
+
+/* Define to 1 if you have the `sigsuspend' function. */
+#undef HAVE_SIGSUSPEND
+
+/* Define to 1 if you have the `socket' function. */
+#undef HAVE_SOCKET
+
+/* Define to 1 if you have the `statfs' function. */
+#undef HAVE_STATFS
+
+/* Define to 1 if stdbool.h conforms to C99. */
+#undef HAVE_STDBOOL_H
+
+/* Does the compiler support C89? */
+#undef HAVE_STDC_89
+
+/* Does the compiler support C99? */
+#undef HAVE_STDC_99
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strchr' function. */
+#undef HAVE_STRCHR
+
+/* Define to 1 if you have the `strerror' function. */
+#undef HAVE_STRERROR
+
+/* Define to 1 if cpp supports the ANSI # stringizing operator. */
+#undef HAVE_STRINGIZE
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <stropts.h> header file. */
+#undef HAVE_STROPTS_H
+
+/* Define to 1 if you have the `strstr' function. */
+#undef HAVE_STRSTR
+
+/* Define to 1 if you have the `strtol' function. */
+#undef HAVE_STRTOL
+
+/* Define to 1 if you have the `strtoul' function. */
+#undef HAVE_STRTOUL
+
+/* Define if `struct ltchars' is defined in <bsdtty.h>. */
+#undef HAVE_STRUCT_LTCHARS
+
+/* Define if `struct ntptimeval' is defined in <sys/timex.h>. */
+#undef HAVE_STRUCT_NTPTIMEVAL
+
+/* Define if `struct sigcontext' is defined in <signal.h>. */
+#undef HAVE_STRUCT_SIGCONTEXT
+
+/* Define if `struct timex' is defined in <sys/timex.h>. */
+#undef HAVE_STRUCT_TIMEX
+
+/* Define to 1 if `tm_zone' is a member of `struct tm'. */
+#undef HAVE_STRUCT_TM_TM_ZONE
+
+/* Define to 1 if you have the `symlink' function. */
+#undef HAVE_SYMLINK
+
+/* Define to 1 if you have the `sync_file_range' function. */
+#undef HAVE_SYNC_FILE_RANGE
+
+/* Define to 1 if you have the `sysconf' function. */
+#undef HAVE_SYSCONF
+
+/* Define to 1 if you have the <sys/dir.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_SYS_DIR_H
+
+/* Define to 1 if you have the <sys/file.h> header file. */
+#undef HAVE_SYS_FILE_H
+
+/* Define to 1 if you have the <sys/ioctl.h> header file. */
+#undef HAVE_SYS_IOCTL_H
+
+/* Define to 1 if you have the <sys/mman.h> header file. */
+#undef HAVE_SYS_MMAN_H
+
+/* Define to 1 if you have the <sys/mount.h> header file. */
+#undef HAVE_SYS_MOUNT_H
+
+/* Define to 1 if you have the <sys/ndir.h> header file, and it defines `DIR'.
+   */
+#undef HAVE_SYS_NDIR_H
+
+/* Define to 1 if you have the <sys/param.h> header file. */
+#undef HAVE_SYS_PARAM_H
+
+/* Define to 1 if you have the <sys/ptyio.h> header file. */
+#undef HAVE_SYS_PTYIO_H
+
+/* Define to 1 if you have the <sys/socket.h> header file. */
+#undef HAVE_SYS_SOCKET_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/timex.h> header file. */
+#undef HAVE_SYS_TIMEX_H
+
+/* Define to 1 if you have the <sys/time.h> header file. */
+#undef HAVE_SYS_TIME_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <sys/un.h> header file. */
+#undef HAVE_SYS_UN_H
+
+/* Define to 1 if you have the <sys/vfs.h> header file. */
+#undef HAVE_SYS_VFS_H
+
+/* Define to 1 if you have <sys/wait.h> that is POSIX.1 compatible. */
+#undef HAVE_SYS_WAIT_H
+
+/* Define to 1 if you have the <termcap.h> header file. */
+#undef HAVE_TERMCAP_H
+
+/* Define to 1 if you have the <termios.h> header file. */
+#undef HAVE_TERMIOS_H
+
+/* Define to 1 if you have the <termio.h> header file. */
+#undef HAVE_TERMIO_H
+
+/* Define to 1 if you have the <term.h> header file. */
+#undef HAVE_TERM_H
+
+/* Define to 1 if you have the `times' function. */
+#undef HAVE_TIMES
+
+/* Define if `struct timex' has the `tai' member. */
+#undef HAVE_TIMEX_TAI
+
+/* Define if `struct timex' has the `time.tv_usec' member. */
+#undef HAVE_TIMEX_TIME_TV_USEC
+
+/* Define if timezone variable is available. */
+#undef HAVE_TIMEZONE
+
+/* Define to 1 if you have the <time.h> header file. */
+#undef HAVE_TIME_H
+
+/* Define if `struct tm' has the `tm_gmtoff' member. */
+#undef HAVE_TM_GMTOFF
+
+/* Define to 1 if your `struct tm' has `tm_zone'. Deprecated, use
+   `HAVE_STRUCT_TM_TM_ZONE' instead. */
+#undef HAVE_TM_ZONE
+
+/* Define to 1 if you have the `truncate' function. */
+#undef HAVE_TRUNCATE
+
+/* Define to 1 if you don't have `tm_zone' but do have the external array
+   `tzname'. */
+#undef HAVE_TZNAME
+
+/* Define to 1 if the system has the type `uintmax_t'. */
+#undef HAVE_UINTMAX_T
+
+/* Define to 1 if the system has the type `uintptr_t'. */
+#undef HAVE_UINTPTR_T
+
+/* Define to 1 if you have the `uname' function. */
+#undef HAVE_UNAME
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if the system has the type `unsigned long long int'. */
+#undef HAVE_UNSIGNED_LONG_LONG_INT
+
+/* Define to 1 if you have the <util.h> header file. */
+#undef HAVE_UTIL_H
+
+/* Define to 1 if you have the `utime' function. */
+#undef HAVE_UTIME
+
+/* Define to 1 if you have the <utime.h> header file. */
+#undef HAVE_UTIME_H
+
+/* Define to 1 if `utime(file, NULL)' sets file's timestamp to the present. */
+#undef HAVE_UTIME_NULL
+
+/* Define to 1 if you have the `vfork' function. */
+#undef HAVE_VFORK
+
+/* Define to 1 if you have the <vfork.h> header file. */
+#undef HAVE_VFORK_H
+
+/* Define to 1 if you have the `vprintf' function. */
+#undef HAVE_VPRINTF
+
+/* Define to 1 if you have the `wait3' system call. Deprecated, you should no
+   longer depend upon `wait3'. */
+#undef HAVE_WAIT3
+
+/* Define to 1 if you have the `waitpid' function. */
+#undef HAVE_WAITPID
+
+/* Define to 1 if `fork' works. */
+#undef HAVE_WORKING_FORK
+
+/* Define to 1 if `vfork' works. */
+#undef HAVE_WORKING_VFORK
+
+/* Define to 1 if the system has the type `_Bool'. */
+#undef HAVE__BOOL
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Define to 1 if the C compiler supports function prototypes. */
+#undef PROTOTYPES
+
+/* Define as the return type of signal handlers (`int' or `void'). */
+#undef RETSIGTYPE
+
+/* Define to 1 if the `setpgrp' function takes no argument. */
+#undef SETPGRP_VOID
+
+/* The size of `char', as computed by sizeof. */
+#undef SIZEOF_CHAR
+
+/* The size of `int', as computed by sizeof. */
+#undef SIZEOF_INT
+
+/* The size of `intmax_t', as computed by sizeof. */
+#undef SIZEOF_INTMAX_T
+
+/* The size of `intptr_t', as computed by sizeof. */
+#undef SIZEOF_INTPTR_T
+
+/* The size of `long', as computed by sizeof. */
+#undef SIZEOF_LONG
+
+/* The size of `off_t', as computed by sizeof. */
+#undef SIZEOF_OFF_T
+
+/* The size of `short', as computed by sizeof. */
+#undef SIZEOF_SHORT
+
+/* The size of `time_t', as computed by sizeof. */
+#undef SIZEOF_TIME_T
+
+/* The size of `uintmax_t', as computed by sizeof. */
+#undef SIZEOF_UINTMAX_T
+
+/* The size of `uintptr_t', as computed by sizeof. */
+#undef SIZEOF_UINTPTR_T
+
+/* The size of `unsigned char', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_CHAR
+
+/* The size of `unsigned int', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_INT
+
+/* The size of `unsigned long', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_LONG
+
+/* The size of `unsigned short', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_SHORT
+
+/* The size of `void *', as computed by sizeof. */
+#undef SIZEOF_VOID_P
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define to name of timezone variable if available. */
+#undef TIMEZONE
+
+/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
+#undef TIME_WITH_SYS_TIME
+
+/* Define to name of `tm_gmtoff' member if available. */
+#undef TM_GMTOFF
+
+/* Define to 1 if your <sys/time.h> declares `struct tm'. */
+#undef TM_IN_SYS_TIME
+
+/* Define if termcap should be used. */
+#undef USE_TERMCAP
+
+/* Define to 1 if unix dynamic loading support is enabled. */
+#undef UX_DLD_ENABLED
+
+/* Define if RETSIGTYPE is `void'. */
+#undef VOID_SIGNAL_HANDLERS
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#  undef WORDS_BIGENDIAN
+# endif
+#endif
+
+/* Enable large inode numbers on Mac OS X 10.5.  */
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
+
+/* Number of bits in a file offset, on hosts where this is settable. */
+#undef _FILE_OFFSET_BITS
+
+/* Define for large files, on AIX-style hosts. */
+#undef _LARGE_FILES
+
+/* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#undef _UINT32_T
+
+/* Define for Solaris 2.5.1 so the uint64_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#undef _UINT64_T
+
+/* Define for Solaris 2.5.1 so the uint8_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#undef _UINT8_T
+
+/* Define to 1 if type `char' is unsigned and you are not using gcc.  */
+#ifndef __CHAR_UNSIGNED__
+# undef __CHAR_UNSIGNED__
+#endif
+
+/* Define like PROTOTYPES; this can be used by system headers. */
+#undef __PROTOTYPES
+
+/* Define to `unsigned char' if <termios.h> doesn't define. */
+#undef cc_t
+
+/* Define to `unsigned long' if <time.h> doesn't define. */
+#undef clock_t
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `int' if <sys/types.h> doesn't define. */
+#undef gid_t
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#undef inline
+#endif
+
+/* Define to the type of a signed integer type of width exactly 16 bits if
+   such a type exists and the standard includes do not define it. */
+#undef int16_t
+
+/* Define to the type of a signed integer type of width exactly 32 bits if
+   such a type exists and the standard includes do not define it. */
+#undef int32_t
+
+/* Define to the type of a signed integer type of width exactly 64 bits if
+   such a type exists and the standard includes do not define it. */
+#undef int64_t
+
+/* Define to the type of a signed integer type of width exactly 8 bits if such
+   a type exists and the standard includes do not define it. */
+#undef int8_t
+
+/* Define to the widest signed integer type if <stdint.h> and <inttypes.h> do
+   not define. */
+#undef intmax_t
+
+/* Define to the type of a signed integer type wide enough to hold a pointer,
+   if such a type exists, and if the system does not define it. */
+#undef intptr_t
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef mode_t
+
+/* Define to 'short' if undefined. */
+#undef nlink_t
+
+/* Define to `long int' if <sys/types.h> does not define. */
+#undef off_t
+
+/* Define to `int' if <sys/types.h> does not define. */
+#undef pid_t
+
+/* Define to the equivalent of the C99 'restrict' keyword, or to
+   nothing if this is not supported.  Do not define if restrict is
+   supported directly.  */
+#undef restrict
+/* Work around a bug in Sun C++: it does not support _Restrict or
+   __restrict__, even though the corresponding Sun C compiler ends up with
+   "#define restrict _Restrict" or "#define restrict __restrict__" in the
+   previous line.  Perhaps some future version of Sun C++ will work with
+   restrict; if so, hopefully it defines __RESTRICT like Sun C does.  */
+#if defined __SUNPRO_CC && !defined __RESTRICT
+# define _Restrict
+# define __restrict__
+#endif
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+#undef size_t
+
+/* Define to `int' if <sys/socket.h> doesn't define. */
+#undef socklen_t
+
+/* Define to `short' if <termios.h> doesn't define. */
+#undef speed_t
+
+/* Define to `long' if <time.h> doesn't define. */
+#undef time_t
+
+/* Define to `int' if <sys/types.h> doesn't define. */
+#undef uid_t
+
+/* Define to the type of an unsigned integer type of width exactly 16 bits if
+   such a type exists and the standard includes do not define it. */
+#undef uint16_t
+
+/* Define to the type of an unsigned integer type of width exactly 32 bits if
+   such a type exists and the standard includes do not define it. */
+#undef uint32_t
+
+/* Define to the type of an unsigned integer type of width exactly 64 bits if
+   such a type exists and the standard includes do not define it. */
+#undef uint64_t
+
+/* Define to the type of an unsigned integer type of width exactly 8 bits if
+   such a type exists and the standard includes do not define it. */
+#undef uint8_t
+
+/* Define to the widest unsigned integer type if <stdint.h> and <inttypes.h>
+   do not define. */
+#undef uintmax_t
+
+/* Define to the type of an unsigned integer type wide enough to hold a
+   pointer, if such a type exists, and if the system does not define it. */
+#undef uintptr_t
+
+/* Define as `fork' if `vfork' does not work. */
+#undef vfork
+
+/* Define to empty if the keyword `volatile' does not work. Warning: valid
+   code using `volatile' can become incorrect without. Disable with care. */
+#undef volatile
+
+#ifndef __unix__
+#  define __unix__
+#endif
+
+#if defined(_IRIX) || defined(_IRIX4) || defined(_IRIX6)
+#  define __IRIX__
+#endif
+
+#if defined(__hpux) || defined(hpux)
+#  define __HPUX__
+#endif
+
+/* If we're running under GNU libc, turn on all the features.
+   Otherwise this should be harmless.  */
+#define _GNU_SOURCE
+
+#include <sys/types.h>
+
+#ifdef TIME_WITH_SYS_TIME
+#  include <sys/time.h>
+#  include <time.h>
+#else
+#  ifdef HAVE_SYS_TIME_H
+#    include <sys/time.h>
+#  else
+#    include <time.h>
+#  endif
+#endif
+
+#ifdef HAVE_TERMIOS_H
+#  include <termios.h>
+#else
+#  ifdef HAVE_TERMIO_H
+#    include <termio.h>
+#  endif
+#endif
+
+#ifdef HAVE_SYS_MMAN_H
+#  include <sys/mman.h>
+#endif
+
+#ifdef HAVE_MMAP
+#  if defined(MAP_ANON) && !defined(MAP_ANONYMOUS)
+#    define MAP_ANONYMOUS MAP_ANON
+#  endif
+#  ifdef MAP_ANONYMOUS
+#    define USE_MMAP_HEAP_MALLOC
+#  endif
+#endif
+
+/* Include the shared configuration header.  */
+#include "confshared.h"
+
+#endif /* SCM_CONFIG_H */
