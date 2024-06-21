@@ -1,15 +1,11 @@
 ### Nanjing University, BSc CS 2019-2023
 
-
-
 ###### Fall 2019
 
 - *<u>Basics of Programming</u>    **96***
   - *C++ based OJ*
 - *<u>Structure and Interpretation of Computer Programs</u>    **87***
   - *Python + Scheme based lab work and project*
-
-
 
 ###### Spring 2020
 
@@ -27,8 +23,6 @@
   - *C++ based Quoridor Player*
   - *C++ based Polynomial Calculator*
 
-
-
 ###### Fall 2020
 
 - *<u>Introduction to Computer Systems</u>    **92***
@@ -39,8 +33,6 @@
   - *Verilog HDL based experiments*
   - *FPGA Greedy Snake*
 
-
-
 ###### Spring 2021
 
 - *<u>Algorithm Design & Analysis</u>    **83***
@@ -50,8 +42,6 @@
 - *<u>Graph Theory and Algorithms</u>    **92***
 - *<u>Operating Systems</u>    **82***
   - *C based Operating System*
-
-
 
 ###### Fall 2021
 
@@ -64,8 +54,6 @@
 - *<u>Probability and Mathematical Statistics</u>    **83***
 - *<u>Semantics</u>    **93***
 
-
-
 ###### Spring 2022
 
 - *<u>Big Data Processing Experiments</u>    **77.5***
@@ -76,14 +64,10 @@
   - *Java based graphics editor*
 - *<u>Concepts of Programming Languages</u>    **94***
 
-
-
 ###### Fall 2022
 
 - *<u>Formal Semantics of Programming Languages</u>    **87***
 - *<u>An Introduction to Linguistics</u>    **83.6***
-
-
 
 ###### Spring 2023
 
